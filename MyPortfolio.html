@@ -5,7 +5,6 @@
   function filledCell(cell) {
     return cell !== '' && cell != null;
   }
-
   function loadFileData(filename) {
   if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
       try {
@@ -213,9 +212,10 @@
           About Me
           <div className="w-24 h-1 bg-blue-400 mx-auto mt-4 rounded-full"></div>
         </h2>
+        <div className="flex items-center justify-center">
         <div className="flex flex-col md:flex-row gap-12 mb-16">
-          <div className="md:w-1/3">
-            <div className="relative">
+          {/*<div className="md:w-1/3">
+            {/*<div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur-2xl opacity-50 animate-pulse"></div>
               <img
                 src="https://media.licdn.com/dms/image/v2/D5603AQFbLe752OnJHQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729490403624?e=1756339200&v=beta&t=t2qcPhj2IuWpal5doZXCDsTI3wE_dUvrvk62zLrVzq4"
@@ -223,13 +223,16 @@
                 className="rounded-lg shadow-lg mx-auto relative z-10 border-4 border-blue-500/20 object-cover"
               />
             </div>
-          </div>
-          <div className="md:w-2/3">
-            <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-              I am a passionate Computer Science student with a strong interest in technology, innovation, and problem-solving. I enjoy working in fast-paced, collaborative environments where creativity and continuous learning are key. With a solid foundation in technical and communication skills, I aim to build meaningful solutions that make a real impact. I’m always eager to grow, adapt, and contribute to projects that drive positive change.
-            </p>
-          </div>
-        </div>
+          </div> */}
+         <div className="flex justify-center">
+      <div className="max-w-2x3">
+        <p className="text-gray-300 leading-relaxed mb-8 text-lg text-justify">
+          I am a passionate Computer Science student with a strong interest in technology, innovation, and problem-solving. I enjoy working in fast-paced, collaborative environments where creativity and continuous learning are key. With a solid foundation in technical and communication skills, I aim to build meaningful solutions that make a real impact. I’m always eager to grow, adapt, and contribute to projects that drive positive change.
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <h3 className="text-2xl font-semibold mb-6 text-blue-400">Education</h3>
