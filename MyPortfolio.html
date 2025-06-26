@@ -238,7 +238,7 @@
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-200 hover:text-[#d4a017] transition-colors"
+                className="text-gray-200 hover:text-[#bfa437] transition-colors"
               >
                 {item}
               </a>
@@ -256,7 +256,7 @@
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-200 hover:text-[#d4a017] transition-colors py-2"
+                  className="text-gray-200 hover:text-[#bfa437] transition-colors py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {item}
@@ -340,7 +340,7 @@
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <h2 className="text-4xl font-bold mb-12 text-center">
           About Me
-          <div className="w-24 h-1 bg-[#d4a017] mx-auto mt-4 rounded-full"></div>
+          <div className="w-24 h-1 bg-[#bfa437] mx-auto mt-4 rounded-full"></div>
         </h2>
         <div className="flex items-center justify-center">
           <div className="flex flex-col md:flex-row gap-12 mb-16">
@@ -355,7 +355,7 @@
         </div>
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-[#d4a017]">Education</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-[#bfa437]">Education</h3>
             <div className="space-y-6">
               {[
                 { title: 'BSc (Hons) in Computer Science', institution: 'SLIIT', years: '2023– Current' },
@@ -365,13 +365,13 @@
                 <div key={index} className="bg-[#000000]/50 backdrop-blur-sm p-6 rounded-lg border border-[#A9A9A9]/20 hover:border-[#A9A9A9]/40 transition-colors">
                   <h4 className="text-xl font-semibold text-white mb-2">{edu.title}</h4>
                   <p className="text-gray-200">{edu.institution}</p>
-                  <p className="text-[#d4a017]">{edu.years}</p>
+                  <p className="text-[#bfa437]">{edu.years}</p>
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-[#d4a017]">Skills</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-[#bfa437]">Skills</h3>
             <div className="space-y-6">
               {[
                 { category: 'Tools & Technologies', skills: ['C', 'Java', 'Python', 'MySQL', 'HTML', 'CSS'] },
@@ -495,7 +495,7 @@
                 className="bg-[#000000]/50 backdrop-blur-sm rounded-lg p-6 border border-[#A9A9A9]/20 hover:shadow-lg transition-all cursor-pointer hover:scale-105 hover:bg-[#000000]/80 hover:border-[#A9A9A9]/40 transition-colors"
                 onClick={() => openModal(project)}
               >
-                <h3 className="text-2xl font-semibold mb-2 text-[#d4a017]">{project.title}</h3>
+                <h3 className="text-2xl font-semibold mb-2 text-[#bfa437]">{project.title}</h3>
                 <p className="text-gray-200 mb-4">{project.year}</p>
                 <p className="text-gray-400 line-clamp-2">{project.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -514,7 +514,7 @@
           <div className="modal" style={{ display: selectedProject ? 'block' : 'none' }} onClick={closeModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={closeModal}>×</span>
-              <h3 className="text-2xl font-bold mb-4 text-[#d4a017]">{selectedProject.title}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-[#bfa437]">{selectedProject.title}</h3>
               <p className="text-gray-200 mb-4">{selectedProject.year}</p>
               <p className="text-gray-400 mb-4">{selectedProject.description}</p>
               <div className="mb-4">
@@ -558,7 +558,7 @@
         <div className="mb-12">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/2 bg-[#000000]/70 p-6 rounded-lg backdrop-blur-sm border border-[#A9A9A9]/20">
-              <h4 className="text-2xl font-semibold mb-4 text-[#d4a017]">Achievements</h4>
+              <h4 className="text-2xl font-semibold mb-4 text-[#bfa437]">Achievements</h4>
               <ul className="space-y-2">
                 {['Silver achievement in South Asian selection competition conducted by International Mathematical Olympiad Federation(2019).'].map((item, index) => (
                   <li key={index} className="flex items-start text-gray-200">
@@ -569,7 +569,7 @@
               </ul>
             </div>
             <div className="md:w-1/2 bg-[#000000]/70 p-6 rounded-lg backdrop-blur-sm border border-[#A9A9A9]/20">
-              <h4 className="text-2xl font-semibold mb-4 text-[#d4a017]">Certifications</h4>
+              <h4 className="text-2xl font-semibold mb-4 text-[#bfa437]">Certifications</h4>
               <ul className="space-y-2">
                 {['"Career Essentials in Generative AI" by Microsoft and LinkedIn (2025)', '"Career Essentials in Software Development" by Microsoft and LinkedIn (2025)', '"Foundations of Project Management" by University of Moratuwa (2025)', '"Web Design for Beginners" by University of Moratuwa (2024)', '"Python for beginners" by University of Moratuwa (2023)'].map((item, index) => (
                   <li key={index} className="flex items-start text-gray-200">
@@ -603,17 +603,17 @@
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h2 className="text-4xl font-bold mb-12 text-center text-white">
             Get in Touch
-            <div className="w-24 h-1 bg-[#d4a017] mx-auto mt-4 rounded-full"></div>
+            <div className="w-24 h-1 bg-[#bfa437] mx-auto mt-4 rounded-full"></div>
           </h2>
           <div className="bg-[#000000]/50 backdrop-blur-sm p-6 rounded-lg border border-[#A9A9A9]/20">
-            <h3 className="text-2xl font-semibold mb-6 text-[#d4a017]">Contact Information</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-[#bfa437]">Contact Information</h3>
             <div className="space-y-4">
               <p className="flex items-start text-gray-500">I'm open to internships, research opportunities, or collaborations. Feel free to reach out!</p>
-              <a href="mailto:madaraweerasinghe02@gmail.com" className="flex items-center text-gray-200 hover:text-[#d4a017] transition-colors">
+              <a href="mailto:madaraweerasinghe02@gmail.com" className="flex items-center text-gray-200 hover:text-[#bfa437] transition-colors">
                 <span className="mr-3 text-[#A9A9A9]">📧</span>
                 madaraweerasinghe02@gmail.com
               </a>
-              <a href="tel:+94719660046" className="flex items-center text-gray-200 hover:text-[#d4a017] transition-colors">
+              <a href="tel:+94719660046" className="flex items-center text-gray-200 hover:text-[#bfa437] transition-colors">
                 <span className="mr-3 text-[#A9A9A9]">📞</span>
                 +94 71 966 0046
               </a>
@@ -621,7 +621,7 @@
                 <span className="mr-3 text-[#A9A9A9] mt-1">📍</span>
                 59/9, School Lane, Rukmalgama, Pannipitiya.
               </p>
-              <a href="https://www.linkedin.com/in/madara-weerasinghe-a35801281/" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-200 hover:text-[#d4a017] transition-colors">
+              <a href="https://www.linkedin.com/in/madara-weerasinghe-a35801281/" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-200 hover:text-[#bfa437] transition-colors">
                 <span className="mr-3 text-[#A9A9A9]">🌐</span>
                 LinkedIn Profile
               </a>
