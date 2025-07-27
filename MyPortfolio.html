@@ -6,77 +6,31 @@
     return cell !== '' && cell != null;
   }
   function loadFileData(filename) {
-  if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
       try {
-          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-          var firstSheetName = workbook.SheetNames[0];
-          var worksheet = workbook.Sheets[firstSheetName];
-
-          // Convert sheet to JSON to filter blank rows
-          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-          // Filter out blank rows (rows where all cells are empty, null, or undefined)
-          var filteredData = jsonData.filter(row => row.some(filledCell));
-
-          // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-          var headerRowIndex = filteredData.findIndex((row, index) =>
-            row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-          );
-          // Fallback
-          if (headerRowIndex === -1 || headerRowIndex > 25) {
-            headerRowIndex = 0;
-          }
-
-          // Convert filtered JSON back to CSV
-          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-          return csv;
+        var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+        var firstSheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[firstSheetName];
+        var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+        var filteredData = jsonData.filter(row => row.some(filledCell));
+        var headerRowIndex = filteredData.findIndex((row, index) =>
+          row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+        );
+        if (headerRowIndex === -1 || headerRowIndex > 25) {
+          headerRowIndex = 0;
+        }
+        var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+        csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+        return csv;
       } catch (e) {
-          console.error(e);
-          return "";
+        console.error(e);
+        return "";
       }
+    }
+    return gk_fileData[filename] || "";
   }
-  return gk_fileData[filename] || "";
-  }
-</script><script type="text/javascript">
-  var gk_isXlsx = false;
-  var gk_xlsxFileLookup = {};
-  var gk_fileData = {};
-  function filledCell(cell) {
-    return cell !== '' && cell != null;
-  }
-  function loadFileData(filename) {
-  if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-      try {
-          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-          var firstSheetName = workbook.SheetNames[0];
-          var worksheet = workbook.Sheets[firstSheetName];
-
-          // Convert sheet to JSON to filter blank rows
-          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-          // Filter out blank rows (rows where all cells are empty, null, or undefined)
-          var filteredData = jsonData.filter(row => row.some(filledCell));
-
-          // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-          var headerRowIndex = filteredData.findIndex((row, index) =>
-            row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-          );
-          // Fallback
-          if (headerRowIndex === -1 || headerRowIndex > 25) {
-            headerRowIndex = 0;
-          }
-
-          // Convert filtered JSON back to CSV
-          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-          return csv;
-      } catch (e) {
-          console.error(e);
-          return "";
-      }
-  }
-  return gk_fileData[filename] || "";
-  }
-</script><!DOCTYPE html>
+</script>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -276,16 +230,16 @@
     useEffect(() => {
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !isVisible) {
+            console.log(`Section ${id} is now visible`);
             setIsVisible(true);
-            observer.unobserve(ref.current);
           }
         },
-        { threshold: 0.1 }
+        { threshold: 0.3, rootMargin: '-50px 0px 0px 0px' }
       );
       if (ref.current) observer.observe(ref.current);
       return () => observer.disconnect();
-    }, []);
+    }, [isVisible, id]);
 
     return (
       <section
@@ -310,14 +264,6 @@
             <p className="text-xl md:text-2xl text-gray-200 mb-8">
               Computer Science Undergraduate at SLIIT
             </p>
-            {/*<div className="flex gap-4 justify-center md:justify-start">
-              <a href="#projects" className="px-8 py-3 border border-[#A9A9A9] text-[#A9A9A9] rounded-full hover:bg-[#A9A9A9]/10 transition-colors">
-                View Projects
-              </a>
-              <a href="#contact" className="px-8 py-3 border border-[#A9A9A9] text-[#A9A9A9] rounded-full hover:bg-[#A9A9A9]/10 transition-colors">
-                Contact Me
-              </a>
-            </div> */}
           </div>
           <div className="flex-1">
             <div className="relative w-80 h-80 md:w-96 md:h-96 mx-auto transition-transform duration-500 hover:scale-105">
@@ -340,7 +286,6 @@
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <h2 className="text-4xl font-bold mb-12 text-center">
           About Me
-          {/*<div className="w-24 h-1 bg-[#bfa437] mx-auto mt-4 rounded-full"></div>*/}
         </h2>
         <div className="flex items-center justify-center">
           <div className="flex flex-col md:flex-row gap-12 mb-16">
@@ -475,7 +420,6 @@
         github: 'https://github.com/ChamudiniWM/A-fault-tolerant-distributed-logging-system.git',
         demo: '',
       },
-      
     ];
 
     const openModal = (project) => {
@@ -485,14 +429,13 @@
     const closeModal = () => setSelectedProject(null);
 
     return (
-      <Section id="projects" direction="left">
+      <Section id="projects" direction="right">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center text-white">My Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <div
                 key={index}
-                // border border-[#A9A9A9]/20">
                 className="bg-[#000000]/50 backdrop-blur-sm rounded-lg p-6 border border-[#A9A9A9]/20 hover:shadow-lg transition-all cursor-pointer hover:scale-105 hover:bg-[#000000]/80 hover:border-[#A9A9A9]/40 transition-colors"
                 onClick={() => openModal(project)}
               >
@@ -552,7 +495,7 @@
   };
 
   const Achievements = () => (
-    <Section id="achievements" direction="right">
+    <Section id="achievements" direction="left">
       <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#A9A9A9]/20 to-[#000000] animate-pulse"></div>
       <div className="max-w-6xl mx-auto px-4 relative z-20">
         <h2 className="text-4xl font-bold mb-12 text-center text-white">Achievements & Certifications</h2>
@@ -599,12 +542,11 @@
     };
 
     return (
-      <Section id="contact" direction="left">
+      <Section id="contact" direction="right">
         <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#A9A9A9]/20 to-[#000000] animate-pulse"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h2 className="text-4xl font-bold mb-12 text-center text-white">
             Contact Me
-            {/*<div className="w-24 h-1 bg-[#bfa437] mx-auto mt-4 rounded-full"></div>*/}
           </h2>
           <div className="bg-[#000000]/50 backdrop-blur-sm p-6 rounded-lg border border-[#A9A9A9]/20">
             <h3 className="text-2xl font-semibold mb-6 text-[#bfa437]">Contact Information</h3>
