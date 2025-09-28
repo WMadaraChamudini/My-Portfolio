@@ -759,6 +759,8 @@
               <span class="badge badge-secondary">C</span>
               <span class="badge badge-secondary">JavaScript</span>
               <span class="badge badge-secondary">C++</span>
+              <span class="badge badge-secondary">SQL</span>
+              <span class="badge badge-secondary">C#</span>
               <span class="badge badge-secondary">HTML</span>
               <span class="badge badge-secondary">CSS</span>
             </div>
@@ -770,8 +772,15 @@
               <span class="badge badge-secondary">React</span>
               <span class="badge badge-secondary">Flutter</span>
               <span class="badge badge-secondary">MySQL</span>
+              <span class="badge badge-secondary">Azure SQL</span>
               <span class="badge badge-secondary">Figma</span>
               <span class="badge badge-secondary">Jira</span>
+              <span class="badge badge-secondary">GitHub</span>
+              <span class="badge badge-secondary">Docker</span>
+              <span class="badge badge-secondary">ASP.NET</span>
+              <span class="badge badge-secondary">Selenium</span>
+              <span class="badge badge-secondary">Postman</span>
+              <span class="badge badge-secondary">Swagger</span>
             </div>
           </div>
           <div>
@@ -795,6 +804,32 @@
     <h2 class="section-title text-center text-white mb-12">Featured Projects</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Enhanced project cards with staggered animations -->
+      <div class="card hover:shadow-lg transition-all cursor-pointer section-animate up" onclick="openModal('STMS')" style="animation-delay: 0.2s;">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-4">
+            <span class="badge badge-secondary">2025 - Present</span>
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-primary">STMS</h3>
+          <p class="text-gray-300 mb-4">
+            Designing a Swimming Tournament Management System.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="badge badge-outline">C#</span>
+            <span class="badge badge-outline">Selenium</span>
+            <span class="badge badge-outline">Jira</span>
+            <span class="badge badge-outline">ASP.NET</span>
+            <span class="badge badge-outline">React</span>
+            <span class="badge badge-outline">Azure SQL</span>
+            <span class="badge badge-outline">GitHub</span>
+            <span class="badge badge-outline">Docker</span>
+            <span class="badge badge-outline">Swagger</span>
+          </div>
+          <!--  <p class="text-sm text-primary font-medium">~60% efficiency improvement</p>  -->
+        </div>
+      </div>
       <div class="card hover:shadow-lg transition-all cursor-pointer section-animate left" onclick="openModal('ecommerce')" style="animation-delay: 0.1s;">
         <div class="p-6">
           <div class="flex justify-between items-start mb-4">
@@ -814,6 +849,7 @@
             <span class="badge badge-outline">MySQL</span>
             <span class="badge badge-outline">JavaScript</span>
             <span class="badge badge-outline">Jira</span>
+            <span class="badge badge-outline">Postman</span>
           </div>
           <p class="text-sm text-primary font-medium">~60% efficiency improvement</p>
         </div>
@@ -1102,11 +1138,27 @@
   }
 
   const projectData = {
+    STMS: {
+      title: 'Swimming Tournament Management System (STMS)',
+      year: '2025 - present',
+      description: 'Develop in 4 Agile sprints, covering requirements analysis, design, development, testing and deployment of a full-stack web app for managing university swimming tournaments. Focus on end-to-end functionality including tournament creation, event scheduling, player registration, timings-to-results flow and leaderboard validation through continuous testing and integration.',
+      tech: ['C#', 'Selenium', 'Jira', 'React', 'ASP.NET', 'Azure SQL', 'GitHub', 'Docker', 'Swagger'],  
+      features: [
+        'Tournament & event setup with scheduling',
+        'University and player registration',
+        'Event timings recording with automatic ranking & points allocation',
+        'Real-time leaderboards (player & university) and results publishing',
+        'Admin login and secure management dashboard'
+      ],
+      github: 'https://github.com/MPcooray/stms-group-project.git',
+      //demo: '_'
+    },
     ecommerce: {
       title: 'Full-Stack E-Commerce System',
       year: '2025',
       description: 'Developed a website for 100+ products with real-time inventory, search, wishlist, booklist uploading, and notifications across 5 sprints.',
-      tech: ['Java', 'JavaScript', 'MySQL', 'React', 'Spring Boot', 'Jira'],         features: [
+      tech: ['Java', 'JavaScript', 'MySQL', 'React', 'Spring Boot', 'Jira', 'Postman'],         
+      features: [
         'Role-based access control',
         'Booklist submission system, and email notifications',
         'Real-time inventory updates, order tracking',
