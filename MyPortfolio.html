@@ -53,7 +53,7 @@
     .nav-brand {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       background: linear-gradient(135deg, #A9A9A9 0%, #bfa437 100%);
@@ -77,12 +77,12 @@
     nav a {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: #A9A9A9;
       text-decoration: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       transition: all 0.3s ease;
       position: relative;
@@ -340,7 +340,7 @@
     nav .nav-brand {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.8rem;
+      font-size: 1.2rem;
       letter-spacing: -0.02em;
       text-transform: uppercase;
       background: linear-gradient(135deg, #bfa437 0%, #A9A9A9 100%);
@@ -356,11 +356,11 @@
     nav a {
       position: relative;
       transition: all 0.3s ease-in-out;
-      padding: 0.75rem 1.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.75rem;
       letter-spacing: 0.025em;
       text-transform: uppercase;
     }
@@ -630,9 +630,10 @@
       <h1 class="nav-brand">
         MADARA WEERASINGHE
       </h1>
-      <div class="md:flex hidden gap-2 nav-links">
+      <div class="md:flex hidden gap-1 nav-links flex-nowrap">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#achievements">Achievements</a>
         <a href="#contact">Contact</a>
@@ -644,6 +645,7 @@
         <div class="nav-links" id="mobile-nav">
           <a href="#home" onclick="closeMobileNav()">Home</a>
           <a href="#about" onclick="closeMobileNav()">About</a>
+          <a href="#experience" onclick="closeMobileNav()">Experience</a>
           <a href="#projects" onclick="closeMobileNav()">Projects</a>
           <a href="#achievements" onclick="closeMobileNav()">Achievements</a>
           <a href="#contact" onclick="closeMobileNav()">Contact</a>
@@ -790,6 +792,60 @@
               <span class="badge badge-secondary">Leadership</span>
               <span class="badge badge-secondary">Problem Solving</span>
               <span class="badge badge-secondary">Creativity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="min-h-screen flex items-center justify-center py-20 relative section-animate left">
+  <div class="absolute inset-0 bg-gradient-to-b from-black via-primary/10 to-black animate-pulse"></div>
+  <div class="max-w-6xl mx-auto px-4 relative z-10">
+    <h2 class="section-title text-center text-white mb-12">Experience</h2>
+    <div class="max-w-4xl mx-auto">
+      <div class="card p-8 section-animate up">
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-primary mb-2">Mentor - Level 2</h3>
+                <h4 class="text-xl font-semibold text-white mb-1">RoboticGen Academy</h4>
+                <p class="text-gray-400 font-medium">Sep 2025 - Present</p>
+              </div>
+              <!-- <span class="badge badge-default mt-2 md:mt-0">Current Role</span> -->
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+              <div class="flex items-start gap-3">
+                <span class="text-primary mt-1">•</span>
+                <p>Conduct sessions for students in programming and IoT concepts, providing hands-on guidance in building projects.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-primary mt-1">•</span>
+                <p>Support student teams in developing problem-solving and project-based learning skills.</p>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h7 class="text-lg font-semibold text-white mb-3">Key Skills Applied</h7>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-outline">Mentoring</span>
+                <span class="badge badge-outline">Programming</span>
+                <span class="badge badge-outline">IoT</span>
+                <span class="badge badge-outline">Project Management</span>
+                <span class="badge badge-outline">Problem Solving</span>
+                <span class="badge badge-outline">Team Leadership</span>
+              </div>
             </div>
           </div>
         </div>
