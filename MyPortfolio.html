@@ -1377,6 +1377,67 @@
   document.querySelectorAll('.section-animate').forEach(el => {
     observer.observe(el);
   });
+
+  // Contact form handler: supports Formspree (set form.dataset.endpoint) or falls back to mailto
+  async function handleContactSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const name = document.getElementById('full-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+
+    if (!name || !email || !message) {
+      status.textContent = 'Please fill in all required fields.';
+      status.style.color = 'orange';
+      return;
+    }
+
+    const endpoint = form.dataset.endpoint && form.dataset.endpoint.trim();
+
+    if (endpoint) {
+      // If Formspree endpoint is configured
+      status.textContent = 'Sending...';
+      status.style.color = '#bfa437';
+      try {
+        const payload = { name, email, subject, message };
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          status.textContent = 'Message sent — thank you!';
+          status.style.color = 'limegreen';
+          form.reset();
+        } else {
+          status.textContent = 'Submission failed — opening mail client as fallback.';
+          status.style.color = 'orange';
+          console.error('Form endpoint error', res.status, await res.text());
+          // fallback to mailto
+          const subjectEnc = encodeURIComponent(subject || `Portfolio message from ${name}`);
+          const bodyEnc = encodeURIComponent(`${message}\n\n---\nFrom: ${name}\nEmail: ${email}`);
+          window.location.href = `mailto:madaraweerasinghe02@gmail.com?subject=${subjectEnc}&body=${bodyEnc}`;
+        }
+      } catch (err) {
+        status.textContent = 'Network error — opening mail client as fallback.';
+        status.style.color = 'orange';
+        console.error(err);
+        const subjectEnc = encodeURIComponent(subject || `Portfolio message from ${name}`);
+        const bodyEnc = encodeURIComponent(`${message}\n\n---\nFrom: ${name}\nEmail: ${email}`);
+        window.location.href = `mailto:madaraweerasinghe02@gmail.com?subject=${subjectEnc}&body=${bodyEnc}`;
+      }
+    } else {
+      // No endpoint configured — open user's mail client
+      const subjectEnc = encodeURIComponent(subject || `Portfolio message from ${name}`);
+      const bodyEnc = encodeURIComponent(`${message}\n\n---\nFrom: ${name}\nEmail: ${email}`);
+      status.textContent = 'Opening your mail client...';
+      status.style.color = '#bfa437';
+      window.location.href = `mailto:madaraweerasinghe02@gmail.com?subject=${subjectEnc}&body=${bodyEnc}`;
+    }
+  }
 </script>
 </body>
 </html>
